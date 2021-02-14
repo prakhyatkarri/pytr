@@ -1,5 +1,7 @@
 from flask import Flask
 
+from service import utils
+
 
 def create_app():
     return Flask(__name__)
@@ -13,5 +15,10 @@ def welcome():
     return 'Welcome to this page!'
 
 
+@app.route('/read')
+def read():
+    return utils.process()
+
+
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', debug=True)
